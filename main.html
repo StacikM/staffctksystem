@@ -7,8 +7,7 @@
     <style>
         body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: Arial, sans-serif;
         }
         header {
             width: 100%;
@@ -20,23 +19,26 @@
         }
         main {
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-grow: 1;
         }
         nav {
             width: 200px;
-            margin-right: 20px;
+            background-color: #e0e0e0;
+            padding: 10px;
         }
         nav a {
             display: block;
             padding: 10px;
             margin-bottom: 10px;
             text-decoration: none;
-            background-color: #e0e0e0;
             color: #333;
             border-radius: 5px;
             text-align: center;
+            background-color: #ccc;
+        }
+        section {
+            flex-grow: 1;
+            padding: 20px;
         }
     </style>
 </head>
@@ -51,14 +53,15 @@
         </div>
     </header>
     <main>
-        <div>
-            <h2>Welcome!</h2>
-        </div>
         <nav>
             <a href="how-to-be-a-great-staff.html">How to be a great staff</a>
             <a href="discord-bot-commands.html">Discord bot commands</a>
             <!-- Add more links as needed -->
         </nav>
+        <section>
+            <h2>Welcome!</h2>
+            <!-- Content of the main section goes here -->
+        </section>
     </main>
 
     <script>
