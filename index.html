@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Center Login</title>
+</head>
+<body>
+    <h2>Staff Center Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Define multiple username-password pairs with ranks
+            const validCredentials = [
+                { username: 'admin', password: 'password123', rank: 'admin' },
+                { username: 'user1', password: 'pass123', rank: 'user' },
+                { username: 'user2', password: 'letmein', rank: 'user' },
+                // Add more as needed
+            ];
+
+            // Check if the entered credentials match any valid pair
+            const user = validCredentials.find(cred => 
+                cred.username === username && cred.password === password
+            );
+
+            if (user) {
+                // Store user information in localStorage for further use
+                localStorage.setItem('currentUser', JSON.stringify(user));
+
+                alert('Login successful!');
+                window.location.href = 'main.html'; // Redirect to main.html
+            } else {
+                alert('Login failed. Please check your credentials.');
+            }
+        }
+    </script>
+</body>
+</html>
