@@ -1,4 +1,3 @@
-// placeholder
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,3 +34,53 @@
             margin-bottom: 10px;
             text-decoration: none;
             background-color: #e0e0e0;
+            color: #333;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <p id="username">Username</p>
+            <p id="rank">Rank</p>
+        </div>
+        <div>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </header>
+    <main>
+        <div>
+            <h2>Welcome!</h2>
+        </div>
+        <nav>
+            <a href="how-to-be-a-great-staff.html">How to be a great staff</a>
+            <a href="discord-bot-commands.html">Discord bot commands</a>
+            <!-- Add more links as needed -->
+        </nav>
+    </main>
+
+    <script>
+        // Check if the user is authenticated
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (!currentUser) {
+            // Redirect to the login page if the user is not authenticated
+            window.location.href = 'index.html';
+        } else {
+            // Access the user's information, such as rank and username
+            const usernameElement = document.getElementById('username');
+            const rankElement = document.getElementById('rank');
+            usernameElement.textContent = `Username: ${currentUser.username}`;
+            rankElement.textContent = `Rank: ${currentUser.rank}`;
+        }
+
+        function logout() {
+            // Clear user information and redirect to the login page
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
