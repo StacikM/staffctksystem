@@ -6,63 +6,55 @@
     <title>Main Page</title>
     <style>
         body {
-            display: flex;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
         }
+
         header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #333;
+            color: white;
             padding: 10px;
-            background-color: #f0f0f0;
+            text-align: right;
         }
+
         main {
-            display: flex;
-            flex-grow: 1;
+            text-align: center;
+            padding: 20px;
         }
+
         nav {
+            float: right;
             width: 200px;
-            background-color: #e0e0e0;
+            background-color: #555;
             padding: 10px;
+            color: white;
         }
+
         nav a {
             display: block;
-            padding: 10px;
-            margin-bottom: 10px;
+            color: white;
             text-decoration: none;
-            color: #333;
-            border-radius: 5px;
-            text-align: center;
-            background-color: #ccc;
-        }
-        section {
-            flex-grow: 1;
-            padding: 20px;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #444;
         }
     </style>
 </head>
 <body>
     <header>
-        <div>
-            <p id="username"></p>
-            <p id="rank"></p>
-        </div>
-        <div>
-            <a href="#" onclick="logout()">Logout</a>
-        </div>
+        <div id="userInfo"></div>
     </header>
+
     <main>
-        <nav>
-            <a href="how-to-be-a-great-staff.html">How to be a great staff</a>
-            <a href="discord-bot-commands.html">Discord bot commands</a>
-            <!-- Add more links as needed -->
-        </nav>
-        <section>
-            <h2>Welcome!</h2>
-            <!-- Content of the main section goes here -->
-        </section>
+        <h2>Welcome!</h2>
+        <p>This is the main content of your website.</p>
     </main>
+
+    <nav>
+        <!-- Remove documentation links -->
+    </nav>
 
     <script>
         // Check if the user is authenticated
@@ -72,17 +64,21 @@
             // Redirect to the login page if the user is not authenticated
             window.location.href = 'index.html';
         } else {
-            // Access the user's information, such as rank and username
-            const usernameElement = document.getElementById('username');
-            const rankElement = document.getElementById('rank');
-            usernameElement.textContent = currentUser.username;  // Only the username
-            rankElement.textContent = currentUser.rank;  // Only the rank
-        }
+            // Update the user info in the header
+            const userInfoElement = document.getElementById('userInfo');
+            userInfoElement.innerHTML = `<div>${currentUser.username}</div><div>${currentUser.rank}</div>`;
 
-        function logout() {
-            // Clear user information and redirect to the login page
-            localStorage.removeItem('currentUser');
-            window.location.href = 'index.html';
+            // Access the user's information, such as rank
+            console.log('Current User:', currentUser);
+
+            // Implement logic based on the user's rank
+            if (currentUser.rank === 'admin') {
+                // Show admin-specific content or perform actions
+                console.log('Welcome Admin!');
+            } else {
+                // Show user-specific content or perform actions
+                console.log('Welcome User!');
+            }
         }
     </script>
 </body>
