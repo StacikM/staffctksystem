@@ -45,8 +45,8 @@
 <body>
     <header>
         <div>
-            <p id="username">Username</p>
-            <p id="rank">Rank</p>
+            <p id="username"></p>
+            <p id="rank"></p>
         </div>
         <div>
             <a href="#" onclick="logout()">Logout</a>
@@ -75,8 +75,8 @@
             // Access the user's information, such as rank and username
             const usernameElement = document.getElementById('username');
             const rankElement = document.getElementById('rank');
-            usernameElement.textContent = `Username: ${currentUser.username}`;
-            rankElement.textContent = `Rank: ${currentUser.rank}`;
+            usernameElement.textContent = currentUser.username;  // Only the username
+            rankElement.textContent = currentUser.rank;  // Only the rank
         }
 
         function logout() {
