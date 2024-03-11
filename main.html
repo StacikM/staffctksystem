@@ -75,7 +75,6 @@
             <h3>CTK staff ranks (in order):</h3>
             <p>Junior staff (someone who works at a server managed by CTK) - Staff (Staff at CTK) - Manager (the one who decides punishments) - Junior Admin (almost admin) - Administrator - Main Administrator (co-owner) - Owner</p>
         </section>
-
     </main>
 
     <script>
@@ -97,6 +96,15 @@
             if (currentUser.rank === 'admin') {
                 // Show admin-specific content or perform actions
                 console.log('Welcome Admin!');
+            } else if (currentUser.rank === 'demoted') {
+                // Display a special message for demoted users
+                document.body.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>[CTK SYSTEMS] YOU HAVE LOGGED INTO A DISABLED CTK CENTER ACCOUNT</h2>
+                        <p>PLEASE LOG OUT AND LOGIN TO ANOTHER ONE ON <a href="https://staff.ctksystem.com/index.html">https://staff.ctksystem.com/index.html</a></p>
+                        <p>FOR MORE INFORMATION, PLEASE CHECK DISCORD</p>
+                    </div>
+                `;
             } else {
                 // Show user-specific content or perform actions
                 console.log('Welcome User!');
