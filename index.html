@@ -15,6 +15,9 @@
         <input type="password" id="password" name="password" required>
 
         <button type="button" onclick="login()">Login</button>
+
+        <!-- Button to clear local storage -->
+        <button type="button" onclick="clearLocalStorage()">Clear Local Storage</button>
     </form>
 
     <script>
@@ -37,14 +40,17 @@
             );
 
             if (user) {
-                // Store user information in localStorage for further use
                 localStorage.setItem('currentUser', JSON.stringify(user));
-
                 alert('Login successful!');
-                window.location.href = 'main.html'; // Redirect to main.html
+                window.location.href = 'main.html';
             } else {
                 alert('Login failed. Please check your credentials.');
             }
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem('currentUser');
+            alert('Local storage cleared.');
         }
     </script>
 </body>
