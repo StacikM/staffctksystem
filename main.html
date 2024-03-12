@@ -89,13 +89,32 @@
             const userInfoElement = document.getElementById('userInfo');
             userInfoElement.innerHTML = `<div>${currentUser.username}</div><div>${currentUser.rank}</div>`;
 
-            // Access the user's information, such as rank
+            // Access the user's information, such as rank and suspension status
             console.log('Current User:', currentUser);
 
-            // Implement logic based on the user's rank
+            // Implement logic based on the user's rank and suspension status
             if (currentUser.rank === 'admin') {
                 // Show admin-specific content or perform actions
                 console.log('Welcome Admin!');
+            } else if (currentUser.rank.startsWith('suspension') && currentUser.suspension) {
+                // Display a special message for suspended users
+                document.body.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>[CTK SYSTEMS] YOU HAVE BEEN TEMPORARILY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
+                        <p>More info:</p>
+                        <p>USER: ${currentUser.username}</p>
+                        <p>DATE OF SUSPENSION END: ${currentUser.suspensionEndDate}</p>
+                    </div>
+                `;
+            } else if (currentUser.rank === 'suspendedperm' && currentUser.suspension) {
+                // Display a special message for permanently suspended users
+                document.body.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>[CTK SYSTEMS] YOU HAVE BEEN PERMANENTLY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
+                        <p>More info:</p>
+                        <p>USER: ${currentUser.username}</p>
+                    </div>
+                `;
             } else if (currentUser.rank === 'demoted') {
                 // Display a special message for demoted users
                 document.body.innerHTML = `
@@ -113,3 +132,4 @@
     </script>
 </body>
 </html>
+
