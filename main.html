@@ -58,7 +58,61 @@
 
     <main>
         <h2>Welcome!</h2>
-        <p>Site isn't finished.</p>
+        
+        <!-- Display suspension message if the user is suspended -->
+        <script>
+            // Check if the user is authenticated
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if (!currentUser) {
+                // Redirect to the login page if the user is not authenticated
+                window.location.href = 'index.html';
+            } else {
+                // Update the user info in the header
+                const userInfoElement = document.getElementById('userInfo');
+                userInfoElement.innerHTML = `<div>${currentUser.username}</div><div>${currentUser.rank}</div>`;
+
+                // Access the user's information, such as rank and suspension status
+                console.log('Current User:', currentUser);
+
+                // Implement logic based on the user's rank and suspension status
+                if (currentUser.rank === 'admin') {
+                    // Show admin-specific content or perform actions
+                    console.log('Welcome Admin!');
+                } else if (currentUser.rank.startsWith('suspension') && currentUser.suspension) {
+                    // Display a special message for suspended users
+                    document.body.innerHTML = `
+                        <div style="text-align: center; padding: 50px;">
+                            <h2>[CTK SYSTEMS] YOU HAVE BEEN TEMPORARILY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
+                            <p>More info:</p>
+                            <p>USER: ${currentUser.username}</p>
+                            <p>DATE OF SUSPENSION END: ${currentUser.suspensionEndDate}</p>
+                        </div>
+                    `;
+                } else if (currentUser.rank === 'suspendedperm' && currentUser.suspension) {
+                    // Display a special message for permanently suspended users
+                    document.body.innerHTML = `
+                        <div style="text-align: center; padding: 50px;">
+                            <h2>[CTK SYSTEMS] YOU HAVE BEEN PERMANENTLY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
+                            <p>More info:</p>
+                            <p>USER: ${currentUser.username}</p>
+                        </div>
+                    `;
+                } else if (currentUser.rank === 'demoted') {
+                    // Display a special message for demoted users
+                    document.body.innerHTML = `
+                        <div style="text-align: center; padding: 50px;">
+                            <h2>[CTK SYSTEMS] YOU HAVE LOGGED INTO A DISABLED CTK CENTER ACCOUNT</h2>
+                            <p>PLEASE LOG OUT AND LOGIN TO ANOTHER ONE ON <a href="https://staff.ctksystem.com/index.html">https://staff.ctksystem.com/index.html</a></p>
+                            <p>FOR MORE INFORMATION, PLEASE CHECK DISCORD</p>
+                        </div>
+                    `;
+                } else {
+                    // Show user-specific content or perform actions
+                    console.log('Welcome User!');
+                }
+            }
+        </script>
 
         <!-- Sections -->
         <section id="section1">
@@ -76,60 +130,5 @@
             <p>Junior staff (someone who works at a server managed by CTK) - Staff (Staff at CTK) - Manager (the one who decides punishments) - Junior Admin (almost admin) - Administrator - Main Administrator (co-owner) - Owner</p>
         </section>
     </main>
-
-    <script>
-        // Check if the user is authenticated
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-        if (!currentUser) {
-            // Redirect to the login page if the user is not authenticated
-            window.location.href = 'index.html';
-        } else {
-            // Update the user info in the header
-            const userInfoElement = document.getElementById('userInfo');
-            userInfoElement.innerHTML = `<div>${currentUser.username}</div><div>${currentUser.rank}</div>`;
-
-            // Access the user's information, such as rank and suspension status
-            console.log('Current User:', currentUser);
-
-            // Implement logic based on the user's rank and suspension status
-            if (currentUser.rank === 'admin') {
-                // Show admin-specific content or perform actions
-                console.log('Welcome Admin!');
-            } else if (currentUser.rank.startsWith('suspension') && currentUser.suspension) {
-                // Display a special message for suspended users
-                document.body.innerHTML = `
-                    <div style="text-align: center; padding: 50px;">
-                        <h2>[CTK SYSTEMS] YOU HAVE BEEN TEMPORARILY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
-                        <p>More info:</p>
-                        <p>USER: ${currentUser.username}</p>
-                        <p>DATE OF SUSPENSION END: ${currentUser.suspensionEndDate}</p>
-                    </div>
-                `;
-            } else if (currentUser.rank === 'suspendedperm' && currentUser.suspension) {
-                // Display a special message for permanently suspended users
-                document.body.innerHTML = `
-                    <div style="text-align: center; padding: 50px;">
-                        <h2>[CTK SYSTEMS] YOU HAVE BEEN PERMANENTLY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
-                        <p>More info:</p>
-                        <p>USER: ${currentUser.username}</p>
-                    </div>
-                `;
-            } else if (currentUser.rank === 'demoted') {
-                // Display a special message for demoted users
-                document.body.innerHTML = `
-                    <div style="text-align: center; padding: 50px;">
-                        <h2>[CTK SYSTEMS] YOU HAVE LOGGED INTO A DISABLED CTK CENTER ACCOUNT</h2>
-                        <p>PLEASE LOG OUT AND LOGIN TO ANOTHER ONE ON <a href="https://staff.ctksystem.com/index.html">https://staff.ctksystem.com/index.html</a></p>
-                        <p>FOR MORE INFORMATION, PLEASE CHECK DISCORD</p>
-                    </div>
-                `;
-            } else {
-                // Show user-specific content or perform actions
-                console.log('Welcome User!');
-            }
-        }
-    </script>
 </body>
 </html>
-
