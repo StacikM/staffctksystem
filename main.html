@@ -89,24 +89,9 @@
                             <p>DATE OF SUSPENSION END: ${currentUser.suspensionEndDate}</p>
                         </div>
                     `;
-                } else if (currentUser.rank === 'suspendedperm' && currentUser.suspension) {
-                    // Display a special message for permanently suspended users
-                    document.body.innerHTML = `
-                        <div style="text-align: center; padding: 50px;">
-                            <h2>[CTK SYSTEMS] YOU HAVE BEEN PERMANENTLY SUSPENDED FROM YOUR ROLE AS STAFF</h2>
-                            <p>More info:</p>
-                            <p>USER: ${currentUser.username}</p>
-                        </div>
-                    `;
                 } else if (currentUser.rank === 'demoted') {
                     // Display a special message for demoted users
-                    document.body.innerHTML = `
-                        <div style="text-align: center; padding: 50px;">
-                            <h2>[CTK SYSTEMS] YOU HAVE LOGGED INTO A DISABLED CTK CENTER ACCOUNT</h2>
-                            <p>PLEASE LOG OUT AND LOGIN TO ANOTHER ONE ON <a href="https://staff.ctksystem.com/index.html">https://staff.ctksystem.com/index.html</a></p>
-                            <p>FOR MORE INFORMATION, PLEASE CHECK DISCORD</p>
-                        </div>
-                    `;
+                    alert('[CTK SYSTEMS] ACCOUNT RESTRICTED. PLEASE CLICK OK TO ACCESS THE STAFF CENTER AND GAIN MORE INFORMATION ABOUT YOUR RESTRICTION.');
                 } else {
                     // Show user-specific content or perform actions
                     console.log('Welcome User!');
@@ -129,8 +114,7 @@
             <h3>CTK staff ranks (in order):</h3>
             <p>Junior staff (someone who works at a server managed by CTK) - Staff (Staff at CTK) - Manager (the one who decides punishments) - Junior Admin (almost admin) - Administrator - Main Administrator (co-owner) - Owner</p>
         </section>
-    </main>
-</body>
-</html>
+    </main
+
 
 // placeholder
