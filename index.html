@@ -32,9 +32,7 @@
                 { username: 'Reebee890', password: 'ADJGHDGDG', rank: 'Administrator' },
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
                 { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff' },
-                { username: 'disabledHolder', password: '123', rank: 'demoted' },
-                { username: 'SuspendedUser', password: 'SuspendedPassword', rank: 'suspension3', suspension: true, suspensionDuration: 3 },
-                { username: 'PermSuspendedUser', password: 'PermSuspendedPassword', rank: 'suspendedperm', suspension: true, suspensionDuration: Infinity },
+                { username: 'suspendedUser', password: 'suspendedPassword', rank: 'suspended' },
             ];
 
             // Check if the entered credentials match any valid pair
@@ -43,31 +41,9 @@
             );
 
             if (user) {
-                if (user.suspension) {
-                    const currentDate = new Date();
-                    const suspensionEndDate = new Date(user.suspensionEndDate);
-
-                    if (currentDate < suspensionEndDate) {
-                        // Display a special message for restricted accounts
-                        alert(`[CTK SYSTEMS]\n\nAccount restricted.\nPlease click OK to access the staff center and gain more information about your restriction`);
-                    } else {
-                        // Suspension period has ended, unsuspend the account
-                        user.suspension = false;
-                        user.suspensionEndDate = null;
-
-                        // Display a message for temporary suspension
-                        if (user.rank.startsWith('suspension')) {
-                            alert(`[CTK SYSTEMS]\n\nYou have been temporarily suspended from your role as staff.\n\nMore info:\nUSER: ${user.username}\nDATE OF SUSPENSION END: ${user.suspensionEndDate}`);
-                        } else if (user.rank === 'suspendedperm') {
-                            // Display a message for permanent suspension
-                            alert(`[CTK SYSTEMS]\n\nYou have been permanently suspended from your role as staff.\n\nMore info:\nUSER: ${user.username}`);
-                        }
-
-                        localStorage.setItem('currentUser', JSON.stringify(user));
-                        window.location.href = 'main.html';
-                    }
+                if (user.rank === 'suspended') {
+                    alert('You have been banned from CTK. If you are a staff, this means you have been demoted and your account is in the process of deletion.');
                 } else {
-                    // Regular login without suspension
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
                     window.location.href = 'main.html';
@@ -80,6 +56,11 @@
         function clearLocalStorage() {
             localStorage.removeItem('currentUser');
             alert('Local storage cleared.');
+        }
+    </script>
+</body>
+</html>
+
         }
     </script>
 </body>
