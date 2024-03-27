@@ -42,7 +42,7 @@
 
             if (user) {
                 if (user.rank === 'suspended') {
-                    alert('You have been banned from CTK. If you are a staff, this means you have been demoted and your account is in the process of deletion.');
+                    alert('[CTK SYSTEMS]\n\nThis account has been banned from CTK.\n------------------------------------------------\nIf you are a staff, you have been demoted');
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
@@ -61,7 +61,3 @@
 </body>
 </html>
 
-        }
-    </script>
-</body>
-</html>
