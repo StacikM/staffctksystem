@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            float: right;
+            width: 200px;
+            background-color: #555;
+            padding: 10px;
+            color: white;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #444;
+        }
+
+        section {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+        }
+
+        .popup-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="userInfo"></div>
+    </header>
+
+    <main>
+        <h2>Welcome to Training Page!</h2>
+        <p>This page is designed to assist you in your training as an In-Training Mod.</p>
+
+        <!-- Sections -->
+        <section id="section1">
+            <h3>Training Resources</h3>
+            <p>Include training materials, guides, or tutorials here to help you learn and develop your skills as an In-Training Mod.</p>
+        </section>
+
+        <section id="section2">
+            <h3>FAQs</h3>
+            <p>Include frequently asked questions and answers related to your role as an In-Training Mod.</p>
+        </section>
+
+        <section id="section3">
+            <h3>Best Practices</h3>
+            <p>Share tips, best practices, and advice to help you succeed in your role.</p>
+        </section>
+
+        <!-- Go to main staff page button -->
+        <button onclick="showPopup()">Go to main staff page</button>
+
+        <!-- Popup message -->
+        <div class="popup-overlay" onclick="hidePopup()"></div>
+        <div class="popup" id="popup">
+            <p>You are going to the main staff page. To return, relog to your account or go to <a href="https://staff.ctksystem.com/training">staff.ctksystem.com/training</a></p>
+            <div class="popup-buttons">
+                <button onclick="hidePopup()">No</button>
+                <a href="main.html"><button>Yes</button></a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check if the user is authenticated
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (!currentUser || currentUser.rank !== 'In-Training Mod') {
+            // Redirect to the login page if the user is not authenticated or not an In-Training Mod
+            window.location.href = 'index.html';
+        } else {
+            // Update the user info in the header
+            const userInfoElement = document.getElementById('userInfo');
+            userInfoElement.innerHTML = `<div>${currentUser.username}</div><div>${currentUser.rank}</div>`;
+        }
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.querySelector('.popup-overlay').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.querySelector('.popup-overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
