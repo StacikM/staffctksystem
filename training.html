@@ -90,34 +90,51 @@
         <p>This page is designed to assist you in your training as an In-Training Mod.</p>
 
         <!-- Sections -->
-        <section id="section1">
-            <h3>Training Resources</h3>
-            <p>Include training materials, guides, or tutorials here to help you learn and develop your skills as an In-Training Mod.</p>
-        </section>
-
         <section id="section2">
             <h3>FAQs</h3>
-            <p>Include frequently asked questions and answers related to your role as an In-Training Mod.</p>
+            <p>
+                <strong>Q: Should I worry if I make mistakes?</strong><br>
+                A: No! Mistakes are allowed, it helps you learn more things.
+            </p>
+            <p>
+                <strong>Q: Why can't I ban?</strong><br>
+                A: It's to prevent new staffs from abusing commands.
+            </p>
+            <p>
+                <strong>Q: What is this page?</strong><br>
+                A: It's made specifically for the people that are having problems.
+            </p>
         </section>
 
         <section id="section3">
-            <h3>Best Practices</h3>
-            <p>Share tips, best practices, and advice to help you succeed in your role.</p>
+            <h3>Commands</h3>
+            <h4>GLOBAL CTK PUNISHMENTS COMMANDS:</h4>
+            <p>
+                <strong>/ban</strong> - Bans the player forever from the server.<br>
+                <strong>/mute</strong> - Disables player's ability to talk temporarily or forever.<br>
+                <strong>/warn</strong> - Warns the player, by giving them a DM.<br>
+                <strong>/editname</strong> - Forcefully (if the bot has enough permission) change the name of a user.
+            </p>
+            <h4>Basket Battle bot commands:</h4>
+            <p>
+                <strong>/bbban</strong> - Bans the player off the server forever. (Mod or+)<br>
+                <strong>/lock-chat</strong> - Locks the chat the command was executed in.
+            </p>
         </section>
-
-        <!-- Go to main staff page button -->
-        <button onclick="showPopup()">Go to main staff page</button>
-
-        <!-- Popup message -->
-        <div class="popup-overlay" onclick="hidePopup()"></div>
-        <div class="popup" id="popup">
-            <p>You are going to the main staff page. To return, relog to your account or go to <a href="https://staff.ctksystem.com/training">staff.ctksystem.com/training</a></p>
-            <div class="popup-buttons">
-                <button onclick="hidePopup()">No</button>
-                <a href="main.html"><button>Yes</button></a>
-            </div>
-        </div>
     </main>
+
+    <!-- Go to main staff page button -->
+    <button onclick="showPopup()">Go to main staff page</button>
+
+    <!-- Popup message -->
+    <div class="popup-overlay" onclick="hidePopup()"></div>
+    <div class="popup" id="popup">
+        <p>You are going to the main staff page. To return, relog to your account or go to <a href="https://staff.ctksystem.com/training">staff.ctksystem.com/training</a></p>
+        <div class="popup-buttons">
+            <button onclick="hidePopup()">No</button>
+            <a href="main.html"><button>Yes</button></a>
+        </div>
+    </div>
 
     <script>
         // Check if the user is authenticated
