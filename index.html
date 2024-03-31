@@ -32,7 +32,7 @@
                 { username: 'Reebee890', password: 'ADJGHDGDG', rank: 'Administrator' },
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
                 { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff' },
-                { username: 'suspendedUser', password: 'suspendedPassword', rank: 'suspended' },
+                { username: 'InTrainingMod', password: 'InTrainingPassword', rank: 'In-Training Mod' },
             ];
 
             // Check if the entered credentials match any valid pair
@@ -41,12 +41,14 @@
             );
 
             if (user) {
-                if (user.rank === 'suspended') {
-                    alert('[CTK SYSTEMS]\n\nThis account has been banned from CTK.\n------------------------------------------------\nIf you are a staff, you have been demoted');
+                if (user.rank === 'In-Training Mod') {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    alert('Login successful!');
+                    window.location.href = 'training.html'; // Redirect to training page
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
-                    window.location.href = 'main.html';
+                    window.location.href = 'main.html'; // Redirect to main page
                 }
             } else {
                 alert('Login failed. Please check your credentials.');
@@ -60,4 +62,3 @@
     </script>
 </body>
 </html>
-
