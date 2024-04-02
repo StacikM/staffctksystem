@@ -34,6 +34,7 @@
                 { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff' },
                 { username: 'InTrainingMod', password: 'InTrainingPassword', rank: 'In-Training Mod' },
                 { username: 'arielsbrother', password: 'ITMFDHFIDFS', rank: 'In-Training Mod' },
+                { username: 'SuspendedUser', password: 'SuspendedPassword', rank: 'Suspended' },
             ];
 
             // Check if the entered credentials match any valid pair
@@ -46,6 +47,8 @@
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
                     window.location.href = 'training.html'; // Redirect to training page
+                } else if (user.rank === 'Suspended') {
+                    alert('[CTK SYSTEMS]\nThis account has been banned from CTK.\n\nIf you are a staff, you have been demoted.');
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
