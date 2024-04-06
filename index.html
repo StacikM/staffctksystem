@@ -7,75 +7,71 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #702963;
+            color: white;
             margin: 0;
             padding: 0;
-            background-color: #702963; /* Dark purple background */
-            color: white; /* White text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        h2 {
-            color: #fff; /* White heading color */
-        }
-
-        #loginForm {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white form background */
+        form {
+            background-color: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            margin: 50px auto;
-            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
         }
 
         label {
             display: block;
             margin-bottom: 10px;
+            text-align: left;
         }
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: none;
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 0 auto 15px auto;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white input background */
-            color: #fff; /* White text color */
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: block;
         }
 
         button {
-            width: 100%;
-            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            background-color: #fff; /* White button background */
-            color: #702963; /* Dark purple button text color */
             cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
         }
 
         button:hover {
-            background-color: #5a215a; /* Darker purple on hover */
-            color: #fff; /* White text on hover */
+            background-color: #45a049;
         }
 
-        button:focus {
-            outline: none;
+        .clear-btn {
+            background-color: #f44336;
+            margin-left: 10px;
         }
 
-        button:last-child {
-            margin-top: 10px;
-            background-color: transparent;
-            border: 1px solid #fff; /* White border */
-            color: #fff; /* White text color */
-        }
-
-        button:last-child:hover {
-            background-color: #fff; /* White background on hover */
-            color: #702963; /* Dark purple text on hover */
+        .clear-btn:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>
 <body>
-    <h2>Staff Center Login</h2>
+    <h1>Staff Center Login</h1>
     <form id="loginForm">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -84,9 +80,7 @@
         <input type="password" id="password" name="password" required>
 
         <button type="button" onclick="login()">Login</button>
-
-        <!-- Button to clear local storage -->
-        <button type="button" onclick="clearLocalStorage()">Clear Local Storage</button>
+        <button type="button" class="clear-btn" onclick="clearLocalStorage()">Clear Local Storage</button>
     </form>
 
     <script>
@@ -100,10 +94,9 @@
                 { username: 'Nicocpvp', password: 'SOHFJQSGJD', rank: 'Main Administrator' },
                 { username: 'Reebee890', password: 'ADJGHDGDG', rank: 'Administrator' },
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
-                { username: 'Jack O World', password: 'ITMHDJSFHSGH', rank: 'In-Training Mod' },
-                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Suspended' },
-                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'In-Training Mod' },
-                { username: 'Charlie', password: 'ITMFHSFHDDG', rank: 'In-Training Mod' }
+                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff' },
+                { username: 'InTrainingMod', password: 'IInTrainingMod', rank: 'In-Training Mod' },
+                { username: 'arielsbrother', password: 'IInTrainingMod', rank: 'In-Training Mod' },
             ];
 
             // Check if the entered credentials match any valid pair
@@ -116,8 +109,6 @@
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
                     window.location.href = 'training.html'; // Redirect to training page
-                } else if (user.rank === 'Suspended') {
-                    alert('[CTK SYSTEMS]\nThis account has been banned from CTK.\n\nIf you are a staff, you have been demoted.');
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
