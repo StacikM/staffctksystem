@@ -4,6 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Center Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #702963; /* Dark purple background */
+            color: white; /* White text color */
+        }
+
+        h2 {
+            color: #fff; /* White heading color */
+        }
+
+        #loginForm {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white form background */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white input background */
+            color: #fff; /* White text color */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff; /* White button background */
+            color: #702963; /* Dark purple button text color */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5a215a; /* Darker purple on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button:last-child {
+            margin-top: 10px;
+            background-color: transparent;
+            border: 1px solid #fff; /* White border */
+            color: #fff; /* White text color */
+        }
+
+        button:last-child:hover {
+            background-color: #fff; /* White background on hover */
+            color: #702963; /* Dark purple text on hover */
+        }
+    </style>
 </head>
 <body>
     <h2>Staff Center Login</h2>
@@ -33,7 +102,8 @@
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
                 { username: 'Jack O World', password: 'ITMHDJSFHSGH', rank: 'In-Training Mod' },
                 { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Suspended' },
-                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'In-Training Mod' }
+                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'In-Training Mod' },
+                { username: 'Charlie', password: 'ITMFHSFHDDG', rank: 'In-Training Mod' }
             ];
 
             // Check if the entered credentials match any valid pair
