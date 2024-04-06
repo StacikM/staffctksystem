@@ -5,72 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Center Login</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #702963;
-            color: white;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        h1 {
-            margin-top: 0;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: calc(100% - 20px);
-            padding: 8px;
-            margin: 0 auto 15px auto;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            display: block;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .clear-btn {
-            background-color: #f44336;
-            margin-left: 10px;
-        }
-
-        .clear-btn:hover {
-            background-color: #d32f2f;
-        }
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
+    <!-- Your HTML content here -->
     <h1>Staff Center Login</h1>
     <form id="loginForm">
         <label for="username">Username:</label>
@@ -80,7 +19,7 @@
         <input type="password" id="password" name="password" required>
 
         <button type="button" onclick="login()">Login</button>
-        <button type="button" class="clear-btn" onclick="clearLocalStorage()">Clear Local Storage</button>
+        <button type="button" onclick="clearLocalStorage()">Clear Local Storage</button>
     </form>
 
     <script>
@@ -88,36 +27,32 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Define multiple username-password pairs with ranks
             const validCredentials = [
                 { username: 'Stacik', password: 'OSHFDHSQU', rank: 'Owner' },
                 { username: 'Nicocpvp', password: 'SOHFJQSGJD', rank: 'Main Administrator' },
                 { username: 'Reebee890', password: 'ADJGHDGDG', rank: 'Administrator' },
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
-                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff', suspended: true },
-                { username: 'InTrainingMod', password: 'InTrainingMod', rank: 'In-Training Mod' },
-                { username: 'arielsbrother', password: 'IInTrainingMod', rank: 'In-Training Mod' },
-                { username: 'Jack O World', password: 'IJack O World', rank: 'In-Training Mod' },
-                { username: 'Damian97', password: 'IDamian97', rank: 'In-Training Mod' },
-                { username: 'Charlie', password: 'ICharlie', rank: 'In-Training Mod' },
+                { username: 'Jack O World', password: 'ITMHDJSFHSGH', rank: 'In-Training Mod' },
+                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Suspended' },
+                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'In-Training Mod' },
+                { username: 'Charlie', password: 'ITMFHSFHDDG', rank: 'In-Training Mod' }
             ];
 
-            // Check if the entered credentials match any valid pair
             const user = validCredentials.find(cred => 
                 cred.username === username && cred.password === password
             );
 
             if (user) {
-                if (user.suspended) {
-                    alert('[CTK SYSTEMS]\nThis account has been suspended.');
+                if (user.rank === 'Suspended') {
+                    alert('[CTK SYSTEMS]\n\nYou have been banned from CTK.\nIf you are a staff, this means you have been demoted and your account is in the process of deletion.');
                 } else if (user.rank === 'In-Training Mod') {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
-                    window.location.href = 'training.html'; // Redirect to training page
+                    window.location.href = 'training.html';
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
-                    window.location.href = 'main.html'; // Redirect to main page
+                    window.location.href = 'main.html';
                 }
             } else {
                 alert('Login failed. Please check your credentials.');
