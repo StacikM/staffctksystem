@@ -94,9 +94,12 @@
                 { username: 'Nicocpvp', password: 'SOHFJQSGJD', rank: 'Main Administrator' },
                 { username: 'Reebee890', password: 'ADJGHDGDG', rank: 'Administrator' },
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
-                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff' },
-                { username: 'InTrainingMod', password: 'IInTrainingMod', rank: 'In-Training Mod' },
+                { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Junior Staff', suspended: true },
+                { username: 'InTrainingMod', password: 'InTrainingMod', rank: 'In-Training Mod' },
                 { username: 'arielsbrother', password: 'IInTrainingMod', rank: 'In-Training Mod' },
+                { username: 'Jack O World', password: 'IJack O World', rank: 'In-Training Mod' },
+                { username: 'Damian97', password: 'IDamian97', rank: 'In-Training Mod' },
+                { username: 'Charlie', password: 'ICharlie', rank: 'In-Training Mod' },
             ];
 
             // Check if the entered credentials match any valid pair
@@ -105,7 +108,9 @@
             );
 
             if (user) {
-                if (user.rank === 'In-Training Mod') {
+                if (user.suspended) {
+                    alert('[CTK SYSTEMS]\nThis account has been suspended.');
+                } else if (user.rank === 'In-Training Mod') {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
                     window.location.href = 'training.html'; // Redirect to training page
