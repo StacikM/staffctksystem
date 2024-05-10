@@ -7,71 +7,69 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #702963; /* Dark purple background */
-            color: white; /* White text */
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center; /* Center align the form horizontally */
-            align-items: center; /* Center align the form vertically */
-            height: 100vh; /* Full viewport height */
+            background-color: #702963; /* Dark purple background color */
+            color: white; /* Text color */
         }
 
-        form {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white form */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-            text-align: center; /* Center align form content */
         }
 
-        label {
-            display: block; /* Display labels as blocks */
+        .login-form label, .login-form input, .login-form button {
+            display: block;
             margin-bottom: 10px;
         }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%; /* Full width text input */
-            padding: 10px;
-            margin-bottom: 20px;
+        .login-form button {
+            background-color: #fff; /* White button background color */
+            color: #702963; /* Dark purple text color */
+            padding: 5px 10px;
             border: none;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white input */
-        }
-
-        button {
-            background-color: #553e87; /* Dark purple button */
-            color: white;
-            border: none;
-            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #4b346f; /* Darker purple on hover */
+        .login-form button:hover {
+            background-color: #ddd; /* Light gray hover background color */
         }
     </style>
 </head>
 <body>
-    <form id="loginForm">
-        <h1>Staff Center Login</h1>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    <div class="container">
+        <h2>Staff Center Login</h2>
+        <form class="login-form" id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="button" onclick="login()">Login</button>
-        <button type="button" onclick="clearLocalStorage()">Clear Local Storage</button>
-    </form>
+            <button type="button" onclick="login()">Login</button>
+
+            <!-- Button to clear local storage -->
+            <button type="button" onclick="clearLocalStorage()">Clear Local Storage</button>
+        </form>
+    </div>
 
     <script>
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
+            // Define multiple username-password pairs with ranks
             const validCredentials = [
                 { username: 'Stacik', password: 'OSHFDHSQU', rank: 'Owner' },
                 { username: 'Nicocpvp', password: 'SOHFJQSGJD', rank: 'Main Administrator' },
@@ -79,25 +77,25 @@
                 { username: 'Wallter', password: 'JMDHGHTRDHG', rank: 'Junior Staff' },
                 { username: 'Jack O World', password: 'ITMHDJSFHSGH', rank: 'In-Training Mod' },
                 { username: 'Frer', password: 'SHFIDGJHQFDJS', rank: 'Suspended' },
-                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'Suspended' },
-                { username: 'Charlie', password: 'ITMFHSFHDDG', rank: 'In-Training Mod' }
+                { username: 'Damian97', password: 'ITMFUDUGFGQ', rank: 'In-Training Mod' },
+                { username: 'Charlie', password: 'ITMFHSFHDDG', rank: 'In-Training Mod' },
+                { username: 'SonicDude', password: 'JSFHUSIFSIS', rank: 'Junior Staff' }
             ];
 
+            // Check if the entered credentials match any valid pair
             const user = validCredentials.find(cred => 
                 cred.username === username && cred.password === password
             );
 
             if (user) {
-                if (user.rank === 'Suspended') {
-                    alert('[CTK SYSTEMS]\n\nYou have been banned from CTK.\nIf you are a staff, this means you have been demoted and your account is in the process of deletion.');
-                } else if (user.rank === 'In-Training Mod') {
+                if (user.rank === 'In-Training Mod') {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
-                    window.location.href = 'training.html';
+                    window.location.href = 'training.html'; // Redirect to training page
                 } else {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     alert('Login successful!');
-                    window.location.href = 'main.html';
+                    window.location.href = 'main.html'; // Redirect to main page
                 }
             } else {
                 alert('Login failed. Please check your credentials.');
