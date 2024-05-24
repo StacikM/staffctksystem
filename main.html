@@ -57,6 +57,7 @@
     </header>
 
     <main>
+        <h1>Staff Center</h1> <!-- Centered heading on top -->
         <h2>Welcome!</h2>
         
         <!-- Display suspension message if the user is suspended -->
@@ -114,6 +115,17 @@
             <h3>CTK staff ranks (in order):</h3>
             <p>Junior staff (someone who works at a server managed by CTK) - Staff (Staff at CTK) - Manager (the one who decides punishments) - Junior Admin (almost admin) - Administrator - Main Administrator (co-owner) - Owner</p>
         </section>
+
+        <!-- Button to navigate to Basket Battle Staff Guide -->
+        <button onclick="goToBasketBattleGuide()">Go to Basket Battle Staff Guide</button>
+
+        <script>
+            function goToBasketBattleGuide() {
+                if (confirm('You are quitting the original CTK! You are going to a partner affiliated documentary.')) {
+                    window.location.href = 'basket_battle_guide.html';
+                }
+            }
+        </script>
     </main>
 </body>
 </html>
